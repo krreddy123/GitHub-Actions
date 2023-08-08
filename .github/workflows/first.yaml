@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       name: Raman
+      AUTHOR: ${{ github.event.pusher.name }}
 
     # Step represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,7 +35,7 @@ jobs:
         run: |
           echo Hello $name
           echo Actor: ${{ github.actor }}
-          echo committed by: $github.event.commits[0].author.name}
+          echo committed by: {{ github.event.commits[0].author.name }}
 
   dump:
     runs-on: ubuntu-latest
